@@ -25,7 +25,7 @@ export default {
 
   data() {
     return {
-      config: this.value.data?.cloudInit || '',
+      secret: this.value.data?.cloudInit || '',
       type:   this.value?.metadata?.labels?.[HCI.CLOUD_INIT] || 'user',
     };
   },
@@ -50,7 +50,7 @@ export default {
 
   methods: {
     update() {
-      this.value.data = { cloudInit: this.config };
+      this.value.stringData = { cloudInit: this.secret };
     },
 
     updateBeforeSave() {
@@ -60,7 +60,7 @@ export default {
           [HCI.CLOUD_INIT]: this.type,
         };
 
-        this.value.data = { cloudInit: this.config };
+        this.value.stringData = { cloudInit: this.secret };
       }
     }
   }
@@ -97,7 +97,7 @@ export default {
         <div class="resource-yaml">
           <YamlEditor
             ref="yamlUser"
-            v-model="config"
+            v-model="secret"
             class="yaml-editor"
             :editor-mode="mode === 'view' ? 'VIEW_CODE' : 'EDIT_CODE'"
             @onChanges="update"

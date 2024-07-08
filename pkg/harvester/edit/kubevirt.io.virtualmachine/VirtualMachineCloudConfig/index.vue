@@ -5,7 +5,7 @@ import { LabeledInput } from '@components/Form/LabeledInput';
 import YamlEditor, { EDITOR_MODES } from '@shell/components/YamlEditor';
 import ModalWithCard from '@shell/components/ModalWithCard';
 
-import { CONFIG_MAP } from '@shell/config/types';
+import { SECRET } from '@shell/config/types';
 import { HCI as HCI_ANNOTATIONS } from '@pkg/harvester/config/labels-annotations';
 import { _VIEW } from '@shell/config/query-params';
 import DataTemplate from './DataTemplate';
@@ -54,7 +54,7 @@ export default {
   },
 
   async fetch() {
-    const configs = await this.$store.dispatch('harvester/findAll', { type: CONFIG_MAP });
+    const configs = await this.$store.dispatch('harvester/findAll', { type: SECRET });
 
     const optionUser = [];
     const optionNetwork = [];
@@ -151,7 +151,7 @@ export default {
       }
 
       const templateValue = await this.$store.dispatch('harvester/create', {
-        type:     CONFIG_MAP,
+        type:     SECRET,
         metadata: {
           labels:    { [HCI_ANNOTATIONS.CLOUD_INIT]: this.templateType },
           name:      this.cloudTemplateName,

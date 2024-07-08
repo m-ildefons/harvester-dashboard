@@ -1,7 +1,7 @@
 <script>
 import ResourceTable from '@shell/components/ResourceTable';
 import Loading from '@shell/components/Loading';
-import { CONFIG_MAP, SCHEMA } from '@shell/config/types';
+import { SECRET, SCHEMA } from '@shell/config/types';
 import { HCI } from '../types';
 import { NAME, AGE, NAMESPACE } from '@shell/config/table-headers';
 import { HCI as HCI_ANNOTATIONS } from '@pkg/harvester/config/labels-annotations';
@@ -23,9 +23,9 @@ export default {
   async fetch() {
     const inStore = this.$store.getters['currentProduct'].inStore;
 
-    this.rows = await this.$store.dispatch(`${ inStore }/findAll`, { type: CONFIG_MAP });
+    this.rows = await this.$store.dispatch(`${ inStore }/findAll`, { type: SECRET });
 
-    const configSchema = this.$store.getters[`${ inStore }/schemaFor`](CONFIG_MAP);
+    const configSchema = this.$store.getters[`${ inStore }/schemaFor`](SECRET);
 
     if (!configSchema?.collectionMethods.find(x => x.toLowerCase() === 'post')) {
       this.$store.dispatch('type-map/configureType', { match: HCI.CLOUD_TEMPLATE, isCreatable: false });

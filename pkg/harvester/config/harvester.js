@@ -1,6 +1,5 @@
 import {
   NODE,
-  CONFIG_MAP,
   NAMESPACE,
   VIRTUAL_TYPES,
   MANAGEMENT,
@@ -579,7 +578,7 @@ export function init($plugin, store) {
       name:   `${ PRODUCT_NAME }-c-cluster-resource`,
       params: { resource: HCI.CLOUD_TEMPLATE }
     },
-    resource:       CONFIG_MAP,
+    resource:       SECRET,
     resourceDetail: HCI.CLOUD_TEMPLATE,
     resourceEdit:   HCI.CLOUD_TEMPLATE
   });

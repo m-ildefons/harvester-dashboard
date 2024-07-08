@@ -5,7 +5,8 @@ import LabeledSelect from '@shell/components/form/LabeledSelect';
 import YamlEditor, { EDITOR_MODES } from '@shell/components/YamlEditor';
 
 import { _VIEW } from '@shell/config/query-params';
-import { CONFIG_MAP } from '@shell/config/types';
+import { SECRET } from '@shell/config/types';
+import { base64Decode } from '@shell/utils/crypto';
 
 const _NEW = '_NEW';
 const _NONE = '_NONE';
@@ -71,7 +72,7 @@ export default {
     },
 
     id(neu, old) {
-      const cloudInit = this.$store.getters['harvester/byId'](CONFIG_MAP, neu)?.data?.cloudInit || '';
+      const cloudInit = this.$store.getters['harvester/byId'](SECRET, neu)?.data?.cloudInit || '';
 
       this.$emit('updateTemplateId', this.type, neu);
       if (!neu) {
@@ -88,7 +89,7 @@ export default {
         this.yamlScript = cloudInit;
       }
 
-      this.$refs['yaml'].updateValue(cloudInit);
+      this.$refs['yaml'].updateValue(base64Decode(cloudInit));
     },
 
     yamlScript(neu) {
