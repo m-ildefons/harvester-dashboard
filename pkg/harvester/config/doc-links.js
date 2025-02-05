@@ -8,5 +8,7 @@ export const DOC_LINKS = {
   RANCHER_INTEGRATION_URL: `https://docs.harvesterhci.io/${ docVersion }/rancher/rancher-integration`,
   STORAGE_NETWORK_EXAMPLE: `https://docs.harvesterhci.io/${ docVersion }/advanced/storagenetwork#configuration-example`,
   KSMTUNED_MODE:           `https://docs.harvesterhci.io/${ docVersion }/host/#ksmtuned-mode`,
-  UPGRADE_URL:             `https://docs.harvesterhci.io/${ docVersion }/upgrade/index`
+  UPGRADE_URL:             `https://docs.harvesterhci.io/${ docVersion }/upgrade/index`,
+  TRANSPARENT_HUGEPAGES:   `https://docs.kernel.org/admin-guide/mm/transhuge.html`,
+  HUGETLBFS:               `https://docs.kernel.org/admin-guide/mm/hugetlbpage.html`,
 };
